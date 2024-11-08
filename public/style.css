@@ -1,74 +1,59 @@
-/* body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
-    background-color: #f9f9f9;
-}
-
-h1 {
-    color: #333;
-}
-
-p {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-button {
-    font-size: 18px;
-    padding: 10px 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #45a049;
-} */
-
 /* Reset de márgenes y paddings */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Fondo y tipografía global */
-body {
+  }
+  
+  /* Fondo y tipografía global */
+  body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: #121212; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     text-align: center;
-}
-
-/* Contenedor principal */
-.container {
-    background-color: white;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    background-color: #1e1e1e; /* Fondo gris oscuro */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
     padding: 30px;
     width: 300px;
     text-align: center;
-}
-
-/* Estilo del título */
-h1 {
-    font-size: 2rem;
+  }
+  
+  /* Estilo del título */
+  h1 {
+    font-size: 1.8rem;
     margin-bottom: 20px;
-    color: #4CAF50;
-}
-
-/* Botón de incrementar */
-button {
-    background-color: #4CAF50;
+    color: #bb86fc; /* Color morado suave */
+  }
+  
+  /* Texto de instrucciones */
+  p {
+    font-size: 1rem;
+    color: #aaa; /* Color gris claro */
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para el contador */
+  .count-display {
+    font-size: 2rem;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #333; /* Fondo de la caja de contador */
+    border-radius: 5px;
+    color: #fff; /* Texto blanco */
+  }
+  
+  /* Botón de incrementar */
+  .increment-btn {
+    background-color: #6200ea; /* Botón morado oscuro */
     color: white;
     font-size: 1.2rem;
     border: none;
@@ -76,25 +61,29 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-/* Contador */
-#contador {
-    font-size: 2rem;
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #f4f4f9;
-    border-radius: 5px;
-    color: #333;
-}
-
-/* Estilo para los textos pequeños o de aviso */
-p {
-    font-size: 1rem;
-    color: #777;
-}
-
+  }
+  
+  .increment-btn:hover {
+    background-color: #3700b3; /* Color morado más oscuro en hover */
+  }
+  
+  /* Estilo para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .container {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    .count-display {
+      font-size: 1.5rem;
+    }
+  
+    .increment-btn {
+      font-size: 1rem;
+    }
+  }
+  
