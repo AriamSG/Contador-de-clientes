@@ -1,24 +1,51 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>¿Cuántos clientes van a la cereza del café después de las 9:30 pm?</title>
-  <link rel="stylesheet" href="style.css">
+  <title>¿Cuantos clientes van a la cereza del cafe despues de las 9:30pm?</title>
+  <style>
+    /* Aquí va tu CSS */
+  </style>
 </head>
-
 <body>
-  <div class="container">
-    <h1>¿Cuántos clientes van a la cereza del café después de las 9:30 pm?</h1>
-    <p>Haz clic en el botón para incrementar el contador de clientes.</p>
-    <div id="clickCountDisplay" class="count-display">
-      Clientes: <span id="clickCount">0</span>
-    </div>
-    <button id="incrementButton" class="increment-btn">Incrementar</button>
-  </div>
+  <h1>¿Cuantos clientes van a la cereza del cafe despues de las 9:30pm?</h1>
+  <button id="incrementButton">Incrementar</button>
+  <p>Clientes: <span id="clickCount">0</span></p>
 
-  <script src="script.js"></script>
+  <script>
+    const clickCount = document.getElementById("clickCount");
+    const incrementButton = document.getElementById("incrementButton");
+
+    // Obtener el número de clics al cargar la página
+    function fetchClicks() {
+      fetch('https://cuantos-clientes-van-a-la-cereza-del.onrender.com/contador')
+        .then(response => response.json())
+        .then(data => {
+          clickCount.textContent = data.clicks;
+        })
+        .catch(error => console.error('Error al obtener los clics:', error));
+    }
+
+    // Inicializar el contador cuando cargue la página
+    fetchClicks();
+
+    // Incrementar el contador al hacer clic
+    incrementButton.addEventListener("click", () => {
+      fetch('https://cuantos-clientes-van-a-la-cereza-del.onrender.com/incrementar', {
+        method: "POST"
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Actualizar el contador después del incremento
+          fetchClicks();
+        } else {
+          console.error('Error al incrementar los clics:', data);
+        }
+      })
+      .catch(error => console.error('Error al incrementar los clics:', error));
+    });
+  </script>
 </body>
-
 </html>
+

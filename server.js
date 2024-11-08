@@ -1,24 +1,17 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
-
 const app = express();
+
 app.use(cors());
-app.use(express.json());
-app.use(express.static('public')); // Sirve los archivos estáticos de la carpeta 'public'
+app.use(express.json()); // Para manejar las solicitudes JSON
+app.use(express.static('public')); // Servir archivos estáticos desde la carpeta 'public'
 
 // Conexión a la base de datos SQLite
 const db = new sqlite3.Database('./clicks.db');
 
 // Crear tabla si no existe
 db.run('CREATE TABLE IF NOT EXISTS contador (id INTEGER PRIMARY KEY, total_clicks INTEGER)');
-
-// Inicializar el contador si no existe un valor inicial
-db.get('SELECT total_clicks FROM contador WHERE id = 1', (err, row) => {
-  if (!row) {
-    db.run('INSERT INTO contador (id, total_clicks) VALUES (1, 0)');
-  }
-});
 
 // Ruta para obtener el contador
 app.get('/contador', (req, res) => {
@@ -42,14 +35,9 @@ app.post('/incrementar', (req, res) => {
   });
 });
 
-// Inicia el servidor
+// Iniciar el servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor en funcionamiento en el puerto ${PORT}`);
 });
 
-// // Iniciar servidor
-// const PORT = 3000;
-// app.listen(PORT, () => {
-//   console.log(`Servidor corriendo en http://localhost:${PORT}`);
-// });
