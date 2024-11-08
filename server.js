@@ -4,14 +4,21 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // Asegúrate de que esto esté presente
-app.use(express.static('public')); // Asegúrate de que 'public' sea la carpeta donde está index.html
+app.use(express.json());
+app.use(express.static('public')); // Sirve los archivos estáticos de la carpeta 'public'
 
 // Conexión a la base de datos SQLite
 const db = new sqlite3.Database('./clicks.db');
 
 // Crear tabla si no existe
 db.run('CREATE TABLE IF NOT EXISTS contador (id INTEGER PRIMARY KEY, total_clicks INTEGER)');
+
+// Inicializar el contador si no existe un valor inicial
+db.get('SELECT total_clicks FROM contador WHERE id = 1', (err, row) => {
+  if (!row) {
+    db.run('INSERT INTO contador (id, total_clicks) VALUES (1, 0)');
+  }
+});
 
 // Ruta para obtener el contador
 app.get('/contador', (req, res) => {
@@ -35,8 +42,14 @@ app.post('/incrementar', (req, res) => {
   });
 });
 
-// Iniciar servidor
-const PORT = 3000;
+// Inicia el servidor
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+// // Iniciar servidor
+// const PORT = 3000;
+// app.listen(PORT, () => {
+//   console.log(`Servidor corriendo en http://localhost:${PORT}`);
+// });
