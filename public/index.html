@@ -1,15 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>¿Cuántos clientes van a la cereza del café después de las 9:30 pm?</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* CSS para un tema oscuro y moderno */
+    body {
+      background-color: #1e1e2f;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 500px;
+      padding: 20px;
+      background-color: #2b2b3b;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #f5f5f5;
+    }
+
+    p {
+      font-size: 16px;
+      color: #b0b0c3;
+    }
+
+    .count-display {
+      font-size: 20px;
+      margin: 20px 0;
+      color: #ffb86c;
+    }
+
+    .increment-btn {
+      background-color: #ff5e57;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .increment-btn:hover {
+      background-color: #ff856c;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>¿Cuantos clientes van a la cereza del cafe despues de las 9:30pm?</h1>
-  <button id="incrementButton">Incrementar</button>
-  <p>Clientes: <span id="clickCount">0</span></p>
+  <div class="container">
+    <h1>¿Cuántos clientes van a la cereza del café después de las 9:30 pm?</h1>
+    <p>Haz clic en el botón para incrementar el contador de clientes.</p>
+    <div id="clickCountDisplay" class="count-display">
+      Clientes: <span id="clickCount">0</span>
+    </div>
+    <button id="incrementButton" class="increment-btn">Incrementar</button>
+  </div>
 
   <script>
     const clickCount = document.getElementById("clickCount");
@@ -46,5 +106,6 @@
     });
   </script>
 </body>
+
 </html>
 
