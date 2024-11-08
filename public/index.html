@@ -1,42 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <title>¿Cuantos clientes van a la cereza del cafe despues de las 9:30pm?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuántos clientes van a la cereza del café después de las 9:30 pm?</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>¿Cuantos clientes van a la cereza del cafe despues de las 9:30pm?</h1>
-  <button id="incrementButton">Incrementar</button>
-  <p>Clientes: <span id="clickCount">0</span></p>
+  <div class="container">
+    <h1>¿Cuántos clientes van a la cereza del café después de las 9:30 pm?</h1>
+    <p>Haz clic en el botón para incrementar el contador de clientes.</p>
+    <div id="clickCountDisplay" class="count-display">
+      Clientes: <span id="clickCount">0</span>
+    </div>
+    <button id="incrementButton" class="increment-btn">Incrementar</button>
+  </div>
 
-  <script>
-    const clickCount = document.getElementById("clickCount");
-    const incrementButton = document.getElementById("incrementButton");
-
-    // Obtener el número de clics al cargar la página
-    fetch('http://localhost:3000/contador')
-      .then(response => response.json())
-      .then(data => {
-        clickCount.textContent = data.clicks;
-      });
-
-    // Incrementar el contador al hacer clic
-    incrementButton.addEventListener("click", () => {
-      fetch('http://localhost:3000/incrementar', {
-        method: "POST"
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          // Actualizar el contador después del incremento
-          fetch('http://localhost:3000/contador')
-            .then(response => response.json())
-            .then(data => {
-              clickCount.textContent = data.clicks;
-            });
-        }
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
+
 </html>

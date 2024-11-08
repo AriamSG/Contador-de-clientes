@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin-top: 50px;
@@ -28,4 +28,73 @@ button {
 
 button:hover {
     background-color: #45a049;
+} */
+
+/* Reset de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+/* Fondo y tipografía global */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+}
+
+/* Estilo del título */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #4CAF50;
+}
+
+/* Botón de incrementar */
+button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Contador */
+#contador {
+    font-size: 2rem;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f4f4f9;
+    border-radius: 5px;
+    color: #333;
+}
+
+/* Estilo para los textos pequeños o de aviso */
+p {
+    font-size: 1rem;
+    color: #777;
+}
+
