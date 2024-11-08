@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Cuantos clientes van a la cereza del cafe despues de las 9:30pm?</title>
+</head>
+<body>
+  <h1>¿Cuantos clientes van a la cereza del cafe despues de las 9:30pm?</h1>
+  <button id="incrementButton">Incrementar</button>
+  <p>Clientes: <span id="clickCount">0</span></p>
+
+  <script>
+    const clickCount = document.getElementById("clickCount");
+    const incrementButton = document.getElementById("incrementButton");
+
+    // Obtener el número de clics al cargar la página
+    fetch('http://localhost:3000/contador')
+      .then(response => response.json())
+      .then(data => {
+        clickCount.textContent = data.clicks;
+      });
+
+    // Incrementar el contador al hacer clic
+    incrementButton.addEventListener("click", () => {
+      fetch('http://localhost:3000/incrementar', {
+        method: "POST"
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Actualizar el contador después del incremento
+          fetch('http://localhost:3000/contador')
+            .then(response => response.json())
+            .then(data => {
+              clickCount.textContent = data.clicks;
+            });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
